@@ -6,14 +6,6 @@ import './MiniCalendar.css';
 const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-const getFirstDay = (): number => {
-    const firstDay = moment()
-    .startOf("month")
-    .format("d"); 
-
-    return Number(firstDay);
-}
-
 const MiniCalendar: FC = () => {
     const [day, setDay] = useState(0);
     const [month, setMonth] = useState(0);
@@ -31,44 +23,56 @@ const MiniCalendar: FC = () => {
         setYear(year);
     }, []);
 
-    let blanks = [];
-
-    for (let i = 0; i < getFirstDay(); i++) {
-        blanks.push(<td className="calendar-day empty"></td>)
-    }
-
-    let daysInMonth = [];
-
-    for (let i = 1; i <= moment().daysInMonth(); i++) {
-        daysInMonth.push(<td className={`calendar-day ${i == day ? 'today' : ''}`}>{i}</td>)
-    }
-
-    const allSlots = [...blanks, ...daysInMonth];
+    const getFirstDay = (): number => {
+        const firstDay = moment()
+        .startOf("month")
+        .format("d"); 
     
-    let rows: JSX.Element[][] = [];
-    let cells: JSX.Element[] = [];
-
-    allSlots.forEach((cell, i) => {
-        if (i % 7 !== 0) {
-            cells.push(cell);
-        } else {
-            rows.push(cells);
-            cells = [];
-            cells.push(cell);
+        return Number(firstDay) - 1;
+    };
+    
+    const generateCalendarData = () => {
+        let blanks = [];
+    
+        for (let i = 0; i < getFirstDay(); i++) {
+            blanks.push(<td className="calendar-day empty"></td>)
         }
-
-        if (i === allSlots.length - 1) {
-            rows.push(cells);
+    
+        let daysInMonth = [];
+    
+        for (let i = 1; i <= moment().daysInMonth(); i++) {
+            daysInMonth.push(<td className={`calendar-day ${i == day ? 'today' : ''}`}>{i}</td>)
         }
-    });
-
-    let allDays = rows.map((row, i) => {
-        return <tr key={i}>{row}</tr>;
-    });
+    
+        const allSlots = [...blanks, ...daysInMonth];
+        
+        let rows: JSX.Element[][] = [];
+        let cells: JSX.Element[] = [];
+    
+        allSlots.forEach((cell, i) => {
+            if (i % 7 !== 0) {
+                cells.push(cell);
+            } else {
+                rows.push(cells);
+                cells = [];
+                cells.push(cell);
+            }
+    
+            if (i === allSlots.length - 1) {
+                rows.push(cells);
+            }
+        });
+    
+        let allDays = rows.map((row, i) => {
+            return <tr key={i}>{row}</tr>;
+        });
+    
+        return allDays;
+    }
     
     return (
         <>
-            <h2>{months[month - 1]} {year}</h2>
+            <h2 id="mini-calendar-title">{months[month - 1]} {year}</h2>
 
             <table className="mini-calendar">
                 <thead>
@@ -78,7 +82,7 @@ const MiniCalendar: FC = () => {
                 </thead>
 
                 <tbody>
-                    {allDays}
+                    {generateCalendarData()}
                 </tbody>
             </table>
         </>
