@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 
-import Calendar from './components/Calendar/Calendar';
 import Home from './components/Home/Home';
 import Layout from './components/Layout/Layout';
 import Login from './components/Login/Login';
@@ -16,7 +15,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/calendar" element={<Calendar />} />
         </Routes>
       </Layout>
     </div>
