@@ -5,8 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #00DBDE;
-  background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+  /* background-color: #00DBDE; */
+  /* background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%); */
 }
 
 code {
@@ -27,12 +27,12 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   min-height: 100vh;
+  padding: 2em;
 }
 
 .main-title {
-  color: white;
+  color: black;
   font-size: 6rem;
 }
 
@@ -40,12 +40,18 @@ main {
 .title {
   text-transform: uppercase;
   font-size: 3.5rem;
-  color: white;
+  color: black;
 }
 
-.btn {
+.btn-big {
   margin: 10px 40px;
   font-size: 20px;
+  transition: 0.5s ease-out;
+}
+
+.btn-medium {
+  margin: 5px 15px;
+  font-size: 16px;
   transition: 0.5s ease-out;
 }
 
@@ -66,7 +72,7 @@ main {
   padding: 14px 25px;
   border: none;
   color: var(--dark-purple);
-  background: white;
+  background: var(--beige);
 }
 
 .secondary-btn:hover {
@@ -92,13 +98,13 @@ main {
   width: 35vw;
   background: none;
   border: none;
-  border-bottom: 3px solid white;
-  color: white;
+  border-bottom: 3px solid black;
+  color: black;
   font-size: 1.15rem;
 }
 
 .form-section label {
-  color: white;
+  color: black;
 }
 
 .submit-wrapper {
@@ -110,6 +116,20 @@ main {
 
 .error {
   font-size: 1.05rem;
-  color: white;
+  color: black;
   margin-top: 5px;
+}
+
+.page-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.page-wrapper-centered {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
