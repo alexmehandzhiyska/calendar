@@ -41,7 +41,7 @@ const Register: FC = () => {
     };
     
     return (
-        <section className="form-wrapper">
+        <section className="page-wrapper-centered form-wrapper">
             <h1 className="title">Register</h1>
 
             <form className="form" action="POST" onSubmit={handleSubmit(onSubmit)}>
@@ -82,7 +82,7 @@ const Register: FC = () => {
                 </div>
 
                 <div className="form-section submit-wrapper">
-                    <input type="submit" className="btn primary-btn" value="Register" />
+                    <input type="submit" className="btn-big primary-btn" value="Register" />
                 </div>
             </form>
         </section>

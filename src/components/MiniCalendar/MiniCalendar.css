@@ -1,0 +1,8 @@
+.mini-calendar th, td {
+    padding: 0.3em;
+}
+
+.today {
+    color: red;
+    font-weight: bold;
+}

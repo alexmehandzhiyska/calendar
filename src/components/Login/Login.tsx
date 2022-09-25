@@ -26,7 +26,7 @@ const Login: FC = () => {
     const onSubmit: SubmitHandler<Inputs> = (data) => {
         authService.login(data)
             .then(() => {
-                navigate('/');
+                navigate('/calendar');
             })
             .catch((err) => {
                 console.log(err);
@@ -34,7 +34,7 @@ const Login: FC = () => {
     }
     
     return (
-        <section className="form-wrapper">
+        <section className="page-wrapper-centered form-wrapper">
             <h1 className="title">Login</h1>
 
             <form className="form" action="POST" onSubmit={handleSubmit(onSubmit)}>
@@ -51,7 +51,7 @@ const Login: FC = () => {
                 </div>
 
                 <div className="form-section submit-wrapper">
-                    <input type="submit" className="btn primary-btn" value="Log in" />
+                    <input type="submit" className="btn-big primary-btn" value="Log in" />
                 </div>
             </form>
         </section>
