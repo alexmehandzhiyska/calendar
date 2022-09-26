@@ -1,12 +1,23 @@
 #mini-calendar-title {
-    margin-left: 5px;
+    margin-left: 3px;
+}
+
+#mini-calendar-year {
+    color: #fe2c55;
+    font-weight: normal;
+}
+
+.mini-calendar th {
+    color: #454955;
+    font-weight:normal;
 }
 
 .mini-calendar th, td {
-    padding: 0.3em;
+    padding: 0.18em 0.22em;
+    font-size: 0.9rem;
 }
 
 .today {
-    color: red;
+    color: #fe2c55;
     font-weight: bold;
 }

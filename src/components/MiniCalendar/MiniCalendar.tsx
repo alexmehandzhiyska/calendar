@@ -25,8 +25,8 @@ const MiniCalendar: FC = () => {
 
     const getFirstDay = (): number => {
         const firstDay = moment()
-        .startOf("month")
-        .format("d"); 
+            .startOf("month")
+            .format("d"); 
     
         return Number(firstDay) - 1;
     };
@@ -72,12 +72,12 @@ const MiniCalendar: FC = () => {
     
     return (
         <>
-            <h2 id="mini-calendar-title">{months[month - 1]} {year}</h2>
+            <h2 id="mini-calendar-title">{months[month - 1]} <span id="mini-calendar-year">{year}</span></h2>
 
             <table className="mini-calendar">
                 <thead>
                     <tr>
-                        {days.map((day, i) => <td key={i}>{day}</td>)}
+                        {days.map((day, i) => <th key={i}>{day}</th>)}
                     </tr>
                 </thead>
 
