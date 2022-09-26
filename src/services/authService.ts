@@ -35,6 +35,7 @@ const login = async (user: LoginUser) => {
     }
 
     localStorage.setItem('token', data.access);
+    
     return data;
 }
 

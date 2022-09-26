@@ -26,7 +26,8 @@ const Login: FC = () => {
     const onSubmit: SubmitHandler<Inputs> = (data) => {
         authService.login(data)
             .then(() => {
-                navigate('/calendar');
+                const token = localStorage.getItem('token');
+                navigate('/', { state: { token: token } });
             })
             .catch((err) => {
                 console.log(err);
