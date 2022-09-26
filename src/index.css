@@ -55,6 +55,12 @@ main {
   transition: 0.5s ease-out;
 }
 
+.btn-small {
+  margin: 2px 5px;
+  font-size: 12px;
+  transition: 0.5s ease-out;
+}
+
 .primary-btn {
   padding: 15px 26px;
   border: none;
