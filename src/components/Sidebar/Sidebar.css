@@ -69,8 +69,11 @@
 .add-event {
     color: #fe2c55;
     background: white;
-    border: 1px solid #fe2c55;
+    border: 2px solid #fe2c55;
     font-weight: bolder;
     border-radius: 50%;
-    height: 22px;
+    height: 25px;
+    font-size: 1rem;
+    text-align: right;
+    margin-top: 5px;
 }
