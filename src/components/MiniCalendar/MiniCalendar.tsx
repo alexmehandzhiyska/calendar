@@ -41,7 +41,7 @@ const MiniCalendar: FC = () => {
         let daysInMonth = [];
     
         for (let i = 1; i <= moment().daysInMonth(); i++) {
-            daysInMonth.push(<td className={`calendar-day ${i == day ? 'today' : ''}`}>{i}</td>)
+            daysInMonth.push(<td className={`calendar-day ${i === day ? 'today' : ''}`}>{i}</td>)
         }
     
         const allSlots = [...blanks, ...daysInMonth];

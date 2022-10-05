@@ -11,4 +11,9 @@ type LoginUser = {
     password: string
 }
 
-export type { User, LoginUser };
+type AccountConfirmType = {
+    username: string,
+    token: string
+}
+
+export type { User, LoginUser, AccountConfirmType };
