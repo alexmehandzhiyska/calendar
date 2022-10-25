@@ -1,10 +1,12 @@
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import authService from '../../services/authService';
+import { errorNotification } from '../../notifications';
 
 const schema = yup.object({
     'first_name': yup.string().max(150, 'First name cannot be longer than 150 characters.'),
@@ -36,7 +38,7 @@ const Register: FC = () => {
                navigate('/register/confirm-account', { state: { username: data.username } });
             })
             .catch((err) => {
-                console.log(err);
+                errorNotification(err.message);
             });
     };
     
