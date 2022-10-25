@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import './App.css';
 
 import Calendar from './components/Calendar/Calendar';
+import ConfirmAccount from './components/ConfirmAccount/ConfirmAccount';
 import Home from './components/Home/Home';
 import Layout from './components/Layout/Layout';
 import Login from './components/Login/Login';
@@ -25,6 +26,7 @@ function App() {
           <Route path="/" element={state?.token ? <Calendar /> : <Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/register/confirm-account" element={<ConfirmAccount />} />
         </Routes>
       </Layout>
     </div>

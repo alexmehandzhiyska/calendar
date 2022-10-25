@@ -33,7 +33,7 @@ const Register: FC = () => {
     const onSubmit: SubmitHandler<Inputs> = (data) => {
         authService.register(data)
             .then(() => {
-               navigate('/login');
+               navigate('/register/confirm-account', { state: { username: data.username } });
             })
             .catch((err) => {
                 console.log(err);
