@@ -1,41 +1,43 @@
 import { baseUrl } from '../constants';
 import { LoginUser, AccountConfirmType, User } from '../interfaces';
 
-const register = async (data: User) => {
+const register = async (user: User) => {
     const response = await fetch(`${baseUrl}/auth/register`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(user)
     });
 
-    const responseData = await response.json();
+    const data = await response.json();
 
     if (!response.ok) {
-        throw new Error(responseData);
+        const error = Object.values(data).join('\n')
+        throw new Error(error);
     }
 
-    return responseData;
+    return data;
 };
 
-const confirmAccount = async (data: AccountConfirmType) => {
+const confirmAccount = async (account: AccountConfirmType) => {
     const response = await fetch(`${baseUrl}/auth/verify`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(account)
     });
 
-    const responseData = await response.json();
+    const data = await response.json();
 
     if (!response.ok) {
-        throw new Error(responseData);
+        const error = Object.values(data).join('\n')
+        throw new Error(error);
     }
 
-    localStorage.setItem('token', responseData.access);
-    return responseData;
+    localStorage.setItem('token', data.access);
+    return data;
 };
 
 const login = async (user: LoginUser) => {
@@ -50,9 +52,10 @@ const login = async (user: LoginUser) => {
     const data = await response.json();
     
     if (!response.ok) {
-        throw new Error(data);
+        const error = Object.values(data).join('\n');
+        throw new Error(error);
     }
-
+    
     localStorage.setItem('token', data.access);
     
     return data;

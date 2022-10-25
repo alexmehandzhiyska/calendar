@@ -1,10 +1,11 @@
 import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import authService from '../../services/authService';
-import { useNavigate } from 'react-router-dom';
+import { errorNotification } from '../../notifications';
 
 const schema = yup.object({
     'username': yup.string().required(),
@@ -30,7 +31,7 @@ const Login: FC = () => {
                 navigate('/', { state: { token: token } });
             })
             .catch((err) => {
-                console.log(err);
+                errorNotification(err.message);
             });
     }
     

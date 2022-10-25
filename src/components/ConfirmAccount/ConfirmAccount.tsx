@@ -5,6 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import authService from '../../services/authService';
+import { errorNotification, successNotification } from '../../notifications';
 import './ConfirmAccount.css';
 
 const schema = yup.object({
@@ -32,10 +33,11 @@ const ConfirmAccount: FC = () => {
     const onSubmit: SubmitHandler<Inputs> = (data) => {
         authService.confirmAccount({ username: state.username, token: data.token })
             .then((res) => {
+                successNotification('Successfully created account!');
                 navigate('/', { state: { token: res.access } });
             })
             .catch((err) => {
-                console.log(err);
+                errorNotification(err.message);
             });
     };
     
