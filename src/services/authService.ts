@@ -29,13 +29,12 @@ const confirmAccount = async (data: AccountConfirmType) => {
     });
 
     const responseData = await response.json();
-    console.log(responseData);
-    
 
     if (!response.ok) {
         throw new Error(responseData);
     }
 
+    localStorage.setItem('token', responseData.access);
     return responseData;
 };
 

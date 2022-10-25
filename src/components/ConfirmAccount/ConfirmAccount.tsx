@@ -31,8 +31,8 @@ const ConfirmAccount: FC = () => {
 
     const onSubmit: SubmitHandler<Inputs> = (data) => {
         authService.confirmAccount({ username: state.username, token: data.token })
-            .then(() => {
-               navigate('/login');
+            .then((res) => {
+                navigate('/', { state: { token: res.access } });
             })
             .catch((err) => {
                 console.log(err);
